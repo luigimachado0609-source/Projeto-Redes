@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    int logins[4][5];
+    int falhas[4];
+
+    int N;
+    int totalAlertas = 0;
+    int maiorFalha = 0;
+
+    cout << "=== ALERTA DE TENTATIVAS DE LOGIN ===" << endl;
+
+    cout << "Digite a quantidade de contas (1 a 4): ";
+    cin >> N;
+
+    while (N < 1 || N > 4) {
+        cout << "Quantidade invalida! Digite de 1 a 4: ";
+        cin >> N;
+    }
+
+    for (int i = 0; i < N; i++) {
+
+        falhas[i] = 0;
+
+        cout << "\nConta " << i + 1 << endl;
+
+        for (int j = 0; j < 5; j++) {
+
+            cout << "Tentativa " << j + 1
+                 << " (1 = sucesso / 0 = falha): ";
+
+            cin >> logins[i][j];
+
+            while (logins[i][j] != 0 &&
+                   logins[i][j] != 1) {
+
+                cout << "Valor invalido! Digite 0 ou 1: ";
+                cin >> logins[i][j];
+            }
+
+            if (logins[i][j] == 0) {
+                falhas[i]++;
+            }
+        }
+
+        if (falhas[i] > maiorFalha) {
+            maiorFalha = falhas[i];
+        }
+    }
+
+    cout << "\n===== RESULTADO FINAL =====" << endl;
+
+    for (int i = 0; i < N; i++) {
+
+        cout << "\nConta " << i + 1;
+        cout << " - Falhas: " << falhas[i];
+
+        if (falhas[i] >= 3) {
+            cout << " - ALERTA!";
+            totalAlertas++;
+        } else {
+            cout << " - OK";
+        }
+    }
+
+    cout << "\n\nTotal de contas com alerta: "
+         << totalAlertas << endl;
+
+    cout << "Maior numero de falhas: "
+         << maiorFalha << endl;
+
+    return 0;
+}
