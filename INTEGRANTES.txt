@@ -3,7 +3,7 @@ Luigi Alves da Silva Machado
 Gabriel Andrade de Oliveira
 João Vitor Antunes Lima
 
-GitHub:
+GitHub: https://github.com/luigimachado0609-source/Projeto-Redes
 
 #include <iostream>
 using namespace std;
